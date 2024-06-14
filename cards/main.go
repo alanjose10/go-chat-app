@@ -3,6 +3,6 @@ package main
 func main() {
 
 	cards := newDeck()
-	cards.printDeck()
 
+	cards.saveFile("my_cards")
 }
