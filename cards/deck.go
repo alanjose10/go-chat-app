@@ -32,7 +32,7 @@ func newDeck() deck {
 
 func (d deck) printDeck() {
 	for i, card := range d {
-		fmt.Println((i + 1), card)
+		fmt.Printf("Card at index %d -> %s\n", i, card)
 	}
 }
 
@@ -72,7 +72,6 @@ func (d deck) shuffleDeck() {
 	r := rand.New(rand.NewSource(generateRandSource()))
 
 	for i := range d {
-
 		r := r.Intn(len(d))
 		d[i], d[r] = d[r], d[i]
 	}
