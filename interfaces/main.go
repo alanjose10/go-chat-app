@@ -1,35 +1,46 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-type bot interface {
-	getGreeting() string
+type square struct {
+	side float64
 }
 
-type englishBot struct{}
-type spanishBot struct{}
-
-func (englishBot) getGreeting() string {
-	return "Hello"
+func (s square) area() float64 {
+	return s.side * s.side
+}
+func (s square) perimeter() float64 {
+	return 4 * s.side
 }
 
-func (spanishBot) getGreeting() string {
-	return "Hola"
+type circle struct {
+	radius float64
 }
 
-func printReading(b bot) {
-	fmt.Println(b.getGreeting())
+func (c circle) area() float64 {
+	return math.Pi * c.radius * c.radius
 }
 
-// func printReading(sb spanishBot) {
-// 	fmt.Println(sb.getGreeting())
-// }
+func (c circle) perimeter() float64 {
+	return 2 * math.Pi * c.radius
+}
+
+type shape interface {
+	area() float64
+	perimeter() float64
+}
+
+func printShapeInfo(s shape) {
+	fmt.Printf("Area of %T is %f\n", s, s.area())
+	fmt.Printf("Perimeter of %T is %.3f\n", s, s.perimeter())
+}
 
 func main() {
-
-	eb := englishBot{}
-	sb := spanishBot{}
-
-	printReading(eb)
-	printReading(sb)
+	s := square{side: 10}
+	c := circle{radius: 5.43}
+	printShapeInfo(s)
+	printShapeInfo(c)
 }
