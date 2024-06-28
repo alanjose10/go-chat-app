@@ -1,0 +1,10 @@
+.
+├── main.go
+└── test-file.txt
+
+1 directory, 2 files
+total 16
+drwxr-xr-x   4 alanjose  staff  128 28 Jun 14:08 .
+drwxr-xr-x  14 alanjose  staff  448 28 Jun 13:08 ..
+-rw-r--r--   1 alanjose  staff  109 28 Jun 14:08 main.go
+-rw-r--r--   1 alanjose  staff   66 28 Jun 14:09 test-file.txt
