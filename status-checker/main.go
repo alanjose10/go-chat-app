@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"time"
 )
 
 func main() {
@@ -44,19 +43,21 @@ func main() {
 		"https://myntra.com",
 	}
 
+	c := make(chan string)
+
 	for _, item := range links {
-		go makeGetRequest(item)
+		go makeGetRequest(item, c)
 
 	}
-	time.Sleep(10000)
+	fmt.Println(<-c)
 }
 
-func makeGetRequest(url string) {
+func makeGetRequest(url string, c chan string) {
 	_, err := http.Get(url)
 	if err != nil {
-		fmt.Println(url, " is down!")
 		fmt.Println(err)
+		c <- url + " is down"
 	} else {
-		fmt.Println(url, " is up!")
+		c <- url + " is up"
 	}
 }
