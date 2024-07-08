@@ -32,7 +32,7 @@ func WithYear(year int) Option {
 	}
 }
 
-func getCar(opts ...Option) Car {
+func getCar(opts ...Option) *Car {
 	defaultCar := Car{
 		Make:         "defaultMake",
 		Model:        "defaultModel",
@@ -46,7 +46,7 @@ func getCar(opts ...Option) Car {
 	for _, opt := range opts {
 		opt(&defaultCar)
 	}
-	return defaultCar
+	return &defaultCar
 }
 
 func main() {
