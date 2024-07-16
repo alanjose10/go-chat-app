@@ -4,14 +4,25 @@ import (
 	"fmt"
 )
 
-const i = 40737095407370955161651616
-const j = 40737095407370955161651616
+type A struct {
+}
+
+func (a A) TestMethod() {
+	fmt.Println("TestMethod for A")
+}
+
+type B struct {
+	a A
+}
+
+func (b B) TestMethod() {
+	fmt.Println("TestMethod for B")
+}
 
 func main() {
-	i := 0.0
-	for i < 50890723463 {
-		fmt.Println(i)
-		i += 0.0863
-	}
 
+	// a := A{}
+	b := B{A{}}
+	b.TestMethod()
+	b.a.TestMethod()
 }
